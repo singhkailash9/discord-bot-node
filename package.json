@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.4.1"
+  },
+  "name": "discordbot---node",
+  "version": "1.0.0",
+  "description": "A discord bot using node.js for fun",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/singhkailash9/discord-bot-node.git"
+  },
+  "author": "Kailash (BanKai)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/singhkailash9/discord-bot-node/issues"
+  },
+  "homepage": "https://github.com/singhkailash9/discord-bot-node#readme"
+}
