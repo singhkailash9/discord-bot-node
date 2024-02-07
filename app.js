@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const { Client, GatewayIntentBits } = require('discord.js');
 const { test_cmd } = require("./commands/test");
+const { help_cmd } = require("./commands/help")
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 
@@ -20,8 +21,11 @@ client.on('messageCreate', message => {
             case 'test':
                 test_cmd(message);
                 break;
-			default:
-				message.channel.send(`Not a valid command. Please try ${prefix}help`);
+            case 'help':
+                help_cmd(message, prefix);
+                break;
+            default:
+                message.channel.send(`Not a valid command. Please try ${prefix}help`);
             }
         }
 });
