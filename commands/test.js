@@ -1,6 +1,6 @@
 const { createEmbed } = require('../utils/embed');
 
-const test_cmd = (message) => {
+const testCmd = (message) => {
     const testEmbed = createEmbed({
         title: 'Title',
         description: 'This is an example embed.',
@@ -11,4 +11,4 @@ const test_cmd = (message) => {
     message.channel.send({ embeds: [testEmbed] });
 };
 
-module.exports = { test_cmd };
+module.exports = { testCmd };

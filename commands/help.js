@@ -1,6 +1,6 @@
 const { createEmbed } = require('../utils/embed');
 
-const help_cmd = (message, prefix) => {
+const helpCmd = (message, prefix) => {
     const testEmbed = createEmbed({
         title: 'Help',
         description: 'The list of help commands are as follows:',
@@ -14,4 +14,4 @@ const help_cmd = (message, prefix) => {
     message.channel.send({ embeds: [testEmbed] });
 };
 
-module.exports = { help_cmd };
+module.exports = { helpCmd };

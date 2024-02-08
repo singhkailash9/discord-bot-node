@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "discord.js": "^14.14.1",
-    "dotenv": "^16.4.1"
+    "dotenv": "^16.4.1",
+    "node-fetch": "^3.3.2"
   },
   "name": "discordbot---node",
   "version": "1.0.0",
