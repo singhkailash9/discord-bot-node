@@ -2,6 +2,7 @@ import { testCmd } from './commands/test.js';
 import { helpCmd } from './commands/help.js';
 import { memeCmd } from './commands/meme.js';
 import { quoteCmd } from './commands/quote.js';
+import { pfpCmd } from './commands/pfp.js';
 
 const prefix = '+';
 
@@ -22,6 +23,9 @@ const handler = (message) => {
                 break;
             case 'quote':
                 quoteCmd(message);
+                break;
+            case 'pfp':
+                pfpCmd(message);
                 break;
             default:
                 message.channel.send(`Not a valid command. Please try ${prefix}help`);

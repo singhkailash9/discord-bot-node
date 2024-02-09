@@ -1,4 +1,6 @@
-# Discord Bot - Node
+# Nodot
+
+> Nodot is referred as Node bot
 
 This project is a Discord bot built with Node.js. It is the revamped version of my previous Node.js bot. It uses ES6+ JavaScript and is better structured.
 
