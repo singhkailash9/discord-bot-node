@@ -4,6 +4,7 @@ const { Client, GatewayIntentBits } = require('discord.js');
 const { testCmd } = require("./commands/test");
 const { helpCmd } = require("./commands/help");
 const { memeCmd } = require('./commands/meme');
+const { quoteCmd } = require('./commands/quote');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 
@@ -27,6 +28,9 @@ client.on('messageCreate', message => {
                 break;
             case 'meme':
                 memeCmd(message);
+                break;
+            case 'quote':
+                quoteCmd(message);
                 break;
             default:
                 message.channel.send(`Not a valid command. Please try ${prefix}help`);
