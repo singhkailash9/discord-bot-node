@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require('discord.js');
+import { EmbedBuilder } from "discord.js";
 
 function createEmbed({ title = '', description = '', imageUrl = '', color = '#d32256', footerText = '' , fields = ''}) {
     const embed = new EmbedBuilder()
@@ -14,4 +14,4 @@ function createEmbed({ title = '', description = '', imageUrl = '', color = '#d3
     return embed;
 }
 
-module.exports = { createEmbed };
+export { createEmbed };

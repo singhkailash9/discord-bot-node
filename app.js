@@ -1,10 +1,11 @@
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config();
 
-const { Client, GatewayIntentBits } = require('discord.js');
-const { testCmd } = require("./commands/test");
-const { helpCmd } = require("./commands/help");
-const { memeCmd } = require('./commands/meme');
-const { quoteCmd } = require('./commands/quote');
+import { Client, GatewayIntentBits } from 'discord.js';
+import { testCmd } from './commands/test.js';
+import { helpCmd } from './commands/help.js';
+import { memeCmd } from './commands/meme.js';
+import { quoteCmd } from './commands/quote.js';
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 

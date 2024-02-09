@@ -8,6 +8,7 @@
   "version": "1.0.0",
   "description": "A discord bot using node.js for fun",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "test": "test"
   },

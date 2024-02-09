@@ -1,4 +1,4 @@
-const { createEmbed } = require('../utils/embed');
+import { createEmbed } from '../utils/embed.js';
 
 const memeCmd = async (message) => {
     try {
@@ -23,4 +23,4 @@ const memeCmd = async (message) => {
     }
 };
 
-module.exports = { memeCmd };
+export { memeCmd };

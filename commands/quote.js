@@ -1,4 +1,4 @@
-const { createEmbed } = require('../utils/embed');
+import { createEmbed } from '../utils/embed.js';
 
 const quoteCmd = async (message) => {
     try {
@@ -23,4 +23,4 @@ const quoteCmd = async (message) => {
     }
 };
 
-module.exports = { quoteCmd };
+export { quoteCmd };

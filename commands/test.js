@@ -1,4 +1,4 @@
-const { createEmbed } = require('../utils/embed');
+import { createEmbed } from "../utils/embed.js";
 
 const testCmd = (message) => {
     const testEmbed = createEmbed({
@@ -11,4 +11,4 @@ const testCmd = (message) => {
     message.channel.send({ embeds: [testEmbed] });
 };
 
-module.exports = { testCmd };
+export { testCmd };
