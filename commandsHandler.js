@@ -3,6 +3,7 @@ import { helpCmd } from './commands/help.js';
 import { memeCmd } from './commands/meme.js';
 import { quoteCmd } from './commands/quote.js';
 import { pfpCmd } from './commands/pfp.js';
+import { hackCmd } from './commands/hack.js';
 
 const prefix = '+';
 
@@ -26,6 +27,9 @@ const handler = (message) => {
                 break;
             case 'pfp':
                 pfpCmd(message);
+                break;
+            case 'hack':
+                hackCmd(message, args);
                 break;
             default:
                 message.channel.send(`Not a valid command. Please try ${prefix}help`);

@@ -8,6 +8,8 @@ This project is a Discord bot built with Node.js. It is the revamped version of 
 
 - **Meme Sharing:** Automatically fetches and shares meme using meme command.
 - **Quote Command:** Fetches a random quote from the api using quote command.
+- **Profile Picture** Displays profile picture of the user using pfp command.
+- **Help Command** Help command to get started.
 
 (Note: This bot is in its early stages of development. Additional features are planned for future updates.)
 
