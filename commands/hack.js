@@ -37,8 +37,6 @@ const hackCmd = async (message, args) => {
             await sentMessage.edit({ embeds: [hackEmbed] });
         }
 
-        await sentMessage.edit({ embeds: [hackEmbed] });
-
     } catch (error) {
         console.error("Error in hackCmd:", error);
         message.channel.send("Cannot hack, try later.");

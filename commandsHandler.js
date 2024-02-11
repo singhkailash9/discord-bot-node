@@ -11,13 +11,14 @@ const handler = (message) => {
     if (message.author.bot) return;
 
     if (message.content.startsWith(prefix)) {
-        const [cmd_name, ...args] = message.content.trim().substring(prefix.length).split(/\s+/);
+        let [cmd_name, ...args] = message.content.trim().substring(prefix.length).split(/\s+/);
+        cmd_name = cmd_name.toLowerCase();
         switch (cmd_name) {
             case 'test':
                 testCmd(message);
                 break;
             case 'help':
-                helpCmd(message, prefix);
+                helpCmd(message, args, prefix);
                 break;
             case 'meme':
                 memeCmd(message);
@@ -32,7 +33,9 @@ const handler = (message) => {
                 hackCmd(message, args);
                 break;
             default:
-                message.channel.send(`Not a valid command. Please try ${prefix}help`);
+                // message.channel.send(`Not a valid command. Please try ${prefix}help`);
+                message.react('❓')
+                .catch(error => console.error(`Could not react to message: ${error}`));
         }
     };
 }
