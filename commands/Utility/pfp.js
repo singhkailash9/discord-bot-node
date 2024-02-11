@@ -1,8 +1,9 @@
 import { createEmbed } from "../../utils/embed.js";
+import { getMentionedUser } from "../../utils/mentions.js";
 
 const pfpCmd = (message) => {
     try {
-        const user = message.author; 
+        const user = getMentionedUser(message);
         const pfpEmbed = createEmbed({
             title: `${user.username}'s Profile Picture`,
             description: "That's a great picture!",

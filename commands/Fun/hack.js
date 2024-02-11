@@ -1,11 +1,9 @@
 import { createEmbed } from "../../utils/embed.js";
+import { getMentionedExclude } from "../../utils/mentions.js";
 
 const hackCmd = async (message, args) => {
     try {
-        const firstMentionedUser = message.mentions.users.first();
-
-        // Check mentions first then arguments else set to someone
-        const targetName = firstMentionedUser ? firstMentionedUser.username : args.length > 0 ? args[0] : "someone";
+        const targetName = getMentionedExclude(message, args);
 
         let hackEmbed = createEmbed({
             title: `Hacking ${targetName}...`,

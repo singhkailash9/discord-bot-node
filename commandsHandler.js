@@ -4,6 +4,7 @@ import { memeCmd } from './commands/Fun/meme.js';
 import { quoteCmd } from './commands/Fun/quote.js';
 import { pfpCmd } from './commands/Utility/pfp.js';
 import { hackCmd } from './commands/Fun/hack.js';
+import { userInfoCmd } from './commands/Utility/userinfo.js';
 
 const prefix = '+';
 
@@ -28,6 +29,9 @@ const handler = (message) => {
                 break;
             case 'pfp':
                 pfpCmd(message);
+                break;
+            case 'userinfo':
+                userInfoCmd(message);
                 break;
             case 'hack':
                 hackCmd(message, args);
