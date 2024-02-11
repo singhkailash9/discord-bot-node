@@ -1,9 +1,9 @@
-import { testCmd } from './commands/test.js';
-import { helpCmd } from './commands/help.js';
-import { memeCmd } from './commands/meme.js';
-import { quoteCmd } from './commands/quote.js';
-import { pfpCmd } from './commands/pfp.js';
-import { hackCmd } from './commands/hack.js';
+import { testCmd } from './commands/Misc/test.js';
+import { helpCmd } from './commands/Misc/help.js';
+import { memeCmd } from './commands/Fun/meme.js';
+import { quoteCmd } from './commands/Fun/quote.js';
+import { pfpCmd } from './commands/Utility/pfp.js';
+import { hackCmd } from './commands/Fun/hack.js';
 
 const prefix = '+';
 

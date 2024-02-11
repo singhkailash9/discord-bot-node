@@ -1,9 +1,10 @@
-import { createEmbed } from '../utils/embed.js';
+import { createEmbed } from '../../utils/embed.js';
 
 let commands = {
     "Fun": [
         { name: "meme", description: "Shows a random meme from Reddit." },
-        { name: "quote", description: "Shows a random quote." }
+        { name: "quote", description: "Shows a random quote." },
+        { name: "hack", description: "Hack a user. \nPass a username or mention them along with command." }
     ],
     "Utility": [
         { name: "pfp", description: "Displays the profile picture of a user." }

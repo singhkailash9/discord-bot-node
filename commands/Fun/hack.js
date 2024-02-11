@@ -1,4 +1,4 @@
-import { createEmbed } from "../utils/embed.js";
+import { createEmbed } from "../../utils/embed.js";
 
 const hackCmd = async (message, args) => {
     try {
