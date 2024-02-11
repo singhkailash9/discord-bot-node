@@ -7,6 +7,7 @@ let commands = {
         { name: "hack", description: "Hack a user. \nPass a username or mention them along with command." }
     ],
     "Utility": [
+        { name: "define", description: "Returns the definition of an English word." },
         { name: "pfp", description: "Displays the profile picture of a user." },
         { name: "userinfo", description: "Displays the detailed information of a user." }
     ],

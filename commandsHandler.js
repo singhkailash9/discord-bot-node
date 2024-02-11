@@ -5,6 +5,7 @@ import { quoteCmd } from './commands/Fun/quote.js';
 import { pfpCmd } from './commands/Utility/pfp.js';
 import { hackCmd } from './commands/Fun/hack.js';
 import { userInfoCmd } from './commands/Utility/userinfo.js';
+import { defineCmd } from './commands/Utility/define.js';
 
 const prefix = '+';
 
@@ -32,6 +33,9 @@ const handler = (message) => {
                 break;
             case 'userinfo':
                 userInfoCmd(message);
+                break;
+            case 'define':
+                defineCmd(message, args);
                 break;
             case 'hack':
                 hackCmd(message, args);
