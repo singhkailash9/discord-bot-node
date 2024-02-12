@@ -1,10 +1,13 @@
+import { getArgs, sendEmbed, sendText } from "../../utils/commandUtils.js";
 import { createEmbed } from "../../utils/embed.js";
 import { fetchJSON } from "../../utils/fetch.js";
+import { getAuthor } from "../../utils/getAuthor.js";
 
-const defineCmd = async (message, args) => {
+const defineCmd = async (message, margs) => {
     try {
+        const args = await getArgs(message, margs, 'word');
         if (!args.length) {
-            return message.channel.send("Please provide a word to define.");
+            sendText(message, "Please provide a word to define.");
         }
         
         const word = args[0];
@@ -12,7 +15,7 @@ const defineCmd = async (message, args) => {
         let wordData = await fetchJSON(API_URL);
 
         if (!wordData.length) {
-            return message.channel.send("No definition found.");
+            sendText(message, "No definition found.");
         }
 
         const wordInfo = wordData[0];
@@ -21,17 +24,18 @@ const defineCmd = async (message, args) => {
             description += `\n${index + 1}. (${meaning.partOfSpeech}) ${meaning.definitions.map(def => def.definition).join('\n ')}\n`;
         });
 
+        const user = await getAuthor(message);
         const defineEmbed = createEmbed({
             title: `Definition of ${word}`,
             description: description.substring(0, 4096), // embed limits
-            footerText: `Requested by ${message.author.username}`,
+            footerText: `Requested by ${user}.`,
             color: '#d32256'
         });
         
-        message.channel.send({ embeds: [defineEmbed] });
+        sendEmbed(message, defineEmbed);
     } catch (error) {
         console.error("Error in defineCmd:", error);
-        message.channel.send("A problem occurred, try later.");
+        sendText(message, "A problem occurred, try later.");
     }
 }
 

@@ -1,3 +1,4 @@
+import { sendEmbed, sendText } from "../../utils/commandUtils.js";
 import { createEmbed } from "../../utils/embed.js";
 import { fetchJSON } from '../../utils/fetch.js';
 
@@ -12,10 +13,10 @@ const quoteCmd = async (message) => {
             footerText: `Author: ${quoteData[0]["a"]}`,
             color: '#d32256'
         });
-        message.channel.send({ embeds: [quoteEmbed] });
+        sendEmbed(message, quoteEmbed);
     } catch (error) {
         console.error("Failed to fetch quote:", error);
-        message.channel.send("Sorry, I couldn't fetch a quote for you. 😢");
+        sendText(message, "Sorry, I couldn't fetch a quote for you. 😢");
     }
 };
 

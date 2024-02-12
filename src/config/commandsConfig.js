@@ -12,6 +12,14 @@ const commandList = {
         execute: hackCmd,
         description: 'Hack a user. Pass a username or mention them along with command.',
         category: 'Fun',
+        options: [
+            {
+                "name": "targetname",
+                "description": "Mention or type the name of User to hack.",
+                "type": 3, // Type 3 is STRING
+                "required": false
+            }
+        ],
     },
     meme: {
         execute: memeCmd,
@@ -31,10 +39,10 @@ const commandList = {
             {
                 "name": "commandname",
                 "description": "The command to get help for",
-                "type": 3, // Type 3 is STRING
+                "type": 3,
                 "required": false
             }
-        ]
+        ],
     },
     test: {
         execute: testCmd,
@@ -45,16 +53,40 @@ const commandList = {
         execute: defineCmd,
         description: 'Returns the definition of an English word.',
         category: 'Utility',
+        options: [
+            {
+                "name": "word",
+                "description": "The word to look definition of",
+                "type": 3,
+                "required": true
+            }
+        ],
     },
     pfp: {
         execute: pfpCmd,
         description: 'Displays the profile picture of a user.',
         category: 'Utility',
+        options: [
+            {
+                "name": "user",
+                "description": "Mention a user to check profile picture.",
+                "type": 6, // 6 is for USER (mentions)
+                "required": false
+            }
+        ],
     },
     userinfo: {
         execute: userInfoCmd,
         description: 'Displays the detailed information of a user.',
         category: 'Utility',
+        options: [
+            {
+                "name": "user",
+                "description": "Name of user to display information of.",
+                "type": 6,
+                "required": false
+            }
+        ],
     },
 };
 
