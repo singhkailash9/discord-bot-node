@@ -1,51 +1,17 @@
-import { testCmd } from '../commands/Misc/test.js';
-import { helpCmd } from '../commands/Misc/help.js';
-import { memeCmd } from '../commands/Fun/meme.js';
-import { quoteCmd } from '../commands/Fun/quote.js';
-import { pfpCmd } from '../commands/Utility/pfp.js';
-import { hackCmd } from '../commands/Fun/hack.js';
-import { userInfoCmd } from '../commands/Utility/userinfo.js';
-import { defineCmd } from '../commands/Utility/define.js';
+import commandList from '../config/commandsConfig.js';
+import prefix from '../config/botPrefix.js';
 
-const prefix = '+';
+const textCommandHandler = (message) => {
+    if (message.author.bot || !message.content.startsWith(prefix)) return;
 
-const handler = (message) => {
-    if (message.author.bot) return;
+    const [cmdName, ...args] = message.content.slice(prefix.length).split(/\s+/);
+    const command = commandList[cmdName.toLowerCase()];
 
-    if (message.content.startsWith(prefix)) {
-        let [cmd_name, ...args] = message.content.trim().substring(prefix.length).split(/\s+/);
-        cmd_name = cmd_name.toLowerCase();
-        switch (cmd_name) {
-            case 'test':
-                testCmd(message);
-                break;
-            case 'help':
-                helpCmd(message, args, prefix);
-                break;
-            case 'meme':
-                memeCmd(message);
-                break;
-            case 'quote':
-                quoteCmd(message);
-                break;
-            case 'pfp':
-                pfpCmd(message);
-                break;
-            case 'userinfo':
-                userInfoCmd(message);
-                break;
-            case 'define':
-                defineCmd(message, args);
-                break;
-            case 'hack':
-                hackCmd(message, args);
-                break;
-            default:
-                // message.channel.send(`Not a valid command. Please try ${prefix}help`);
-                message.react('❓')
-                .catch(error => console.error(`Could not react to message: ${error}`));
-        }
-    };
-}
+    if (command) {
+        command.execute(message, args);
+    } else {
+        message.react('❓').catch(console.error);
+    }
+};
 
-export { handler }
+export { textCommandHandler as handler };

@@ -1,26 +1,26 @@
 import { REST, Routes } from 'discord.js';
 import dotenv from 'dotenv';
+import commandList from '../src/config/commandsConfig.js';
+
 dotenv.config();
 
-const commands = [
-    {
-        name: 'test',
-        description: 'Test command',
-    },
-];
+const commands = Object.entries(commandList).map(([key, { description }]) => ({
+    name: key,
+    description,
+}));
 
 const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_TOKEN);
 
 (async () => {
     try {
-        console.log('Started refreshing application (/) commands.');
+        console.log('Refreshing slash commands.');
 
         await rest.put(
             Routes.applicationCommands(process.env.CLIENT_ID),
             { body: commands },
         );
 
-        console.log('Successfully reloaded application (/) commands.');
+        console.log('Loaded slash commands.');
     } catch (error) {
         console.error(error);
     }

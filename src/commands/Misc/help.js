@@ -1,27 +1,12 @@
+import commandList from '../../config/commandsConfig.js';
 import { createEmbed } from "../../utils/embed.js";
+import prefix from "../../config/botPrefix.js"
 
-let commands = {
-    "Fun": [
-        { name: "meme", description: "Shows a random meme from Reddit." },
-        { name: "quote", description: "Shows a random quote." },
-        { name: "hack", description: "Hack a user. \nPass a username or mention them along with command." }
-    ],
-    "Utility": [
-        { name: "define", description: "Returns the definition of an English word." },
-        { name: "pfp", description: "Displays the profile picture of a user." },
-        { name: "userinfo", description: "Displays the detailed information of a user." }
-    ],
-    "Misc": [
-        { name: "help", description: "Help command." },
-        { name: "test", description: "A test command for bot." }
-    ],
-};
-
-const helpCmd = (message, args, prefix) => {
+const helpCmd = (message, args) => {
     if (args.length > 0) {
         // Help for a specific command
         const commandName = args[0].toLowerCase();
-        const commandInfo = Object.values(commands).flat().find(cmd => cmd.name === commandName);
+        const commandInfo = commandList[commandName];
         if (commandInfo) {
             const detailedEmbed = createEmbed({
                 title: `Help for ${commandName}`,
@@ -35,8 +20,14 @@ const helpCmd = (message, args, prefix) => {
         }
     } else {
         // General help to show all commands
-        const fields = Object.entries(commands).map(([category, cmds]) => {
-            return { name: category, value: cmds.map(cmd => `\`${cmd.name}\``).join(', ') };
+        let fields = [];
+        Object.entries(commandList).forEach(([commandName, cmd]) => {
+            const category = cmd.category || 'Misc';
+            if (!fields.some(f => f.name === category)) {
+                fields.push({ name: category, value: '', inline: false });
+            }
+            const field = fields.find(f => f.name === category);
+            field.value += `\`${prefix}${commandName}\`: ${cmd.description}\n`;
         });
 
         const helpEmbed = createEmbed({
