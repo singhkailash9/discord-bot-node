@@ -27,6 +27,14 @@ const commandList = {
         execute: helpCmd,
         description: 'Help command to get started.',
         category: 'Misc',
+        options: [
+            {
+                "name": "commandname",
+                "description": "The command to get help for",
+                "type": 3, // Type 3 is STRING
+                "required": false
+            }
+        ]
     },
     test: {
         execute: testCmd,

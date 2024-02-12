@@ -1,10 +1,12 @@
 import commandList from '../../config/commandsConfig.js';
 import { createEmbed } from "../../utils/embed.js";
-import prefix from "../../config/botPrefix.js"
+import prefix from "../../config/botPrefix.js";
+import { getArgs, sendEmbed, sendText } from '../../utils/commandUtils.js';
 
-const helpCmd = (message, args) => {
+const helpCmd = async (message, messageArgs) => {
+    const args = await getArgs(message, messageArgs, 'commandname');
+
     if (args.length > 0) {
-        // Help for a specific command
         const commandName = args[0].toLowerCase();
         const commandInfo = commandList[commandName];
         if (commandInfo) {
@@ -12,14 +14,13 @@ const helpCmd = (message, args) => {
                 title: `Help for ${commandName}`,
                 description: commandInfo.description,
                 color: '#d32256',
-                footerText: `Usage: ${prefix}${commandName}`,
+                footerText: `Usage: ${prefix}${commandName} ${commandInfo.options?.map(opt => opt.required ? `<${opt.name}>` : `[${opt.name}]`).join(' ') || ''}`, // Adjust for showing command options
             });
-            message.channel.send({ embeds: [detailedEmbed] });
+            await sendEmbed(message, detailedEmbed);
         } else {
-            message.channel.send("Command not found.");
+            await sendText(message, "Command not found.");
         }
     } else {
-        // General help to show all commands
         let fields = [];
         Object.entries(commandList).forEach(([commandName, cmd]) => {
             const category = cmd.category || 'Misc';
@@ -27,7 +28,7 @@ const helpCmd = (message, args) => {
                 fields.push({ name: category, value: '', inline: false });
             }
             const field = fields.find(f => f.name === category);
-            field.value += `\`${prefix}${commandName}\`: ${cmd.description}\n`;
+            field.value += `\`${commandName}\`: ${cmd.description}\n`;
         });
 
         const helpEmbed = createEmbed({
@@ -37,7 +38,7 @@ const helpCmd = (message, args) => {
             fields: fields,
             footerText: `Use "${prefix}help <command>" to get more info on a specific command.`,
         });
-        message.channel.send({ embeds: [helpEmbed] });
+        await sendEmbed(message, helpEmbed);
     }
 };
 

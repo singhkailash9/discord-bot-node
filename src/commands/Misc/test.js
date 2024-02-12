@@ -1,3 +1,4 @@
+import { sendEmbed } from "../../utils/commandUtils.js";
 import { createEmbed } from "../../utils/embed.js";
 
 const testCmd = async (message) => {
@@ -8,12 +9,8 @@ const testCmd = async (message) => {
         footerText: 'Footer',
         color: '#d32256'
     });
-    // Hybrid (Slash and text based) command handling
-    if (message.isCommand) {
-        await message.reply({ embeds: [testEmbed] });
-    } else {
-        message.channel.send({ embeds: [testEmbed] });
-    }
+    // Hybrid command
+    sendEmbed(message, testEmbed);
 };
 
 export { testCmd };

@@ -4,10 +4,16 @@ import commandList from '../src/config/commandsConfig.js';
 
 dotenv.config();
 
-const commands = Object.entries(commandList).map(([key, { description }]) => ({
-    name: key,
-    description,
-}));
+const commands = Object.entries(commandList).map(([key, { description, options }]) => {
+    const command = {
+        name: key,
+        description,
+    };
+    if (options) {
+        command.options = options;
+    }
+    return command;
+});
 
 const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_TOKEN);
 
