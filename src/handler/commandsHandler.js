@@ -1,11 +1,11 @@
-import { testCmd } from './commands/Misc/test.js';
-import { helpCmd } from './commands/Misc/help.js';
-import { memeCmd } from './commands/Fun/meme.js';
-import { quoteCmd } from './commands/Fun/quote.js';
-import { pfpCmd } from './commands/Utility/pfp.js';
-import { hackCmd } from './commands/Fun/hack.js';
-import { userInfoCmd } from './commands/Utility/userinfo.js';
-import { defineCmd } from './commands/Utility/define.js';
+import { testCmd } from '../commands/Misc/test.js';
+import { helpCmd } from '../commands/Misc/help.js';
+import { memeCmd } from '../commands/Fun/meme.js';
+import { quoteCmd } from '../commands/Fun/quote.js';
+import { pfpCmd } from '../commands/Utility/pfp.js';
+import { hackCmd } from '../commands/Fun/hack.js';
+import { userInfoCmd } from '../commands/Utility/userinfo.js';
+import { defineCmd } from '../commands/Utility/define.js';
 
 const prefix = '+';
 

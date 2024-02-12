@@ -8,7 +8,7 @@ const pfpCmd = (message) => {
             title: `${user.username}'s Profile Picture`,
             description: "That's a great picture!",
             imageUrl: user.displayAvatarURL({ dynamic: true, size: 1024 }), // dynamic for gifs
-            footerText: `Requested by ${user.username}`,
+            footerText: `Requested by ${message.author.username}`,
             color: '#d32256'
         });
         message.channel.send({ embeds: [pfpEmbed] })

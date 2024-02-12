@@ -1,4 +1,4 @@
-// fetches data
+// fetches data from URL
 import fetch from 'node-fetch';
 
 // returns json response data

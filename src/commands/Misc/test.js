@@ -1,6 +1,6 @@
 import { createEmbed } from "../../utils/embed.js";
 
-const testCmd = (message) => {
+const testCmd = async (message) => {
     const testEmbed = createEmbed({
         title: 'Title',
         description: 'This is an example embed.',
@@ -8,7 +8,12 @@ const testCmd = (message) => {
         footerText: 'Footer',
         color: '#d32256'
     });
-    message.channel.send({ embeds: [testEmbed] });
+    // Hybrid (Slash and text based) command handling
+    if (message.isCommand) {
+        await message.reply({ embeds: [testEmbed] });
+    } else {
+        message.channel.send({ embeds: [testEmbed] });
+    }
 };
 
 export { testCmd };

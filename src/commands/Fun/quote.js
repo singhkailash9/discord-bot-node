@@ -1,4 +1,4 @@
-import { createEmbed } from '../../utils/embed.js';
+import { createEmbed } from "../../utils/embed.js";
 import { fetchJSON } from '../../utils/fetch.js';
 
 const quoteCmd = async (message) => {

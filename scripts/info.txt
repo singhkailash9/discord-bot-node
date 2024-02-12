@@ -1,0 +1,2 @@
+To use slash commands, you need to register them with the Discord API.
+The registerSlashCmd script file in this directory is used to register them for my Nodot bot.
