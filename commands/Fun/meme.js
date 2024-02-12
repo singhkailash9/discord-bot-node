@@ -1,13 +1,9 @@
 import { createEmbed } from '../../utils/embed.js';
+import { fetchJSON } from '../../utils/fetch.js';
 
 const memeCmd = async (message) => {
     try {
-        const fetch = (await import('node-fetch')).default;
-        let response = await fetch(process.env.MEME_API);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        let memeData = await response.json();
+        let memeData = await fetchJSON(process.env.MEME_API);
 
         const memeEmbed = createEmbed({
             title: memeData.title,

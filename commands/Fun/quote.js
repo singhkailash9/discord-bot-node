@@ -1,14 +1,10 @@
 import { createEmbed } from '../../utils/embed.js';
+import { fetchJSON } from '../../utils/fetch.js';
 
 const quoteCmd = async (message) => {
     try {
-        const fetch = (await import('node-fetch')).default;
-        let response = await fetch(process.env.QUOTE_API);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
         // the data is a dictionary
-        let quoteData = await response.json();
+        let quoteData = await fetchJSON(process.env.QUOTE_API);
 
         const quoteEmbed = createEmbed({
             title: "Quote:",

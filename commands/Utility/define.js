@@ -1,4 +1,5 @@
 import { createEmbed } from "../../utils/embed.js";
+import { fetchJSON } from "../../utils/fetch.js";
 
 const defineCmd = async (message, args) => {
     try {
@@ -6,14 +7,9 @@ const defineCmd = async (message, args) => {
             return message.channel.send("Please provide a word to define.");
         }
         
-        const fetch = (await import('node-fetch')).default;
         const word = args[0];
         const API_URL = process.env.DICTIONARY_API + word;
-        let response = await fetch(API_URL);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        let wordData = await response.json();
+        let wordData = await fetchJSON(API_URL);
 
         if (!wordData.length) {
             return message.channel.send("No definition found.");
