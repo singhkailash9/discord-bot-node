@@ -3,7 +3,7 @@ import { getMentionedExclude } from "../../utils/mentions.js";
 
 const hackCmd = async (message, args) => {
     try {
-        const targetName = getMentionedExclude(message, args);
+        const targetName = await getMentionedExclude(message, args);
 
         let hackEmbed = createEmbed({
             title: `Hacking ${targetName}...`,

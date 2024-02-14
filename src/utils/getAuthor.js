@@ -1,19 +1,27 @@
 // Get hybrid command author name
 const getAuthor = async (message) => {
     try {
-        // In guild/server slash cmd: message.member.user.username
-        const guildUser = message.member.user.username;
-
-        // In DM slash cmd: message.user.username;
-        // Text-based: message.author.username
-
+        // Check if it's a slash command
         const isSlash = message.isCommand;
-        let username = isSlash ? guildUser ? guildUser : message.user.username : message.author.username;
+
+        let username;
+        if (isSlash) {
+            // For slash commands, check if it's in a server/guild
+            if (message.member && message.member.user) {
+                username = message.member.user.username;
+            } else if (message.user) { // For DMs
+                username = message.user.username;
+            }
+        } else {
+            // For text-based commands
+            username = message.author.username;
+        }
         return username;
 
     } catch (err) {
         console.error(`getAuthor Error: ${err}`);
+        return null; // Return null on error
     }
-}
+};
 
 export { getAuthor };

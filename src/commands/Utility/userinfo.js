@@ -3,7 +3,7 @@ import { getMentionedUser } from "../../utils/mentions.js";
 
 const userInfoCmd = async (message) => {
     try {
-        const mentionedUser = getMentionedUser(message);
+        const mentionedUser = await getMentionedUser(message);
         const user = mentionedUser.username;
 
         const member = await message.guild.members.fetch(mentionedUser.id);
