@@ -15,8 +15,8 @@ const commandList = {
         options: [
             {
                 "name": "targetname",
-                "description": "Mention or type the name of User to hack.",
-                "type": 3, // Type 3 is STRING
+                "description": "Mention the name of User to hack.",
+                "type": 6,
                 "required": false
             }
         ],
@@ -39,7 +39,7 @@ const commandList = {
             {
                 "name": "commandname",
                 "description": "The command to get help for",
-                "type": 3,
+                "type": 3,  // Type 3 is string
                 "required": false
             }
         ],

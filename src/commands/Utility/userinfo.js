@@ -1,12 +1,15 @@
+import { sendEmbed, sendText } from "../../utils/commandUtils.js";
 import { createEmbed } from "../../utils/embed.js";
+import { getAuthor } from "../../utils/getAuthor.js";
 import { getMentionedUser } from "../../utils/mentions.js";
 
 const userInfoCmd = async (message) => {
     try {
-        const mentionedUser = await getMentionedUser(message);
+        const mentionedUser = await getMentionedUser(message, 'user');
         const user = mentionedUser.username;
 
         const member = await message.guild.members.fetch(mentionedUser.id);
+        const author = await getAuthor(message);
 
         const userInfoEmbed = createEmbed({
             title: "User Info",
@@ -18,13 +21,15 @@ const userInfoCmd = async (message) => {
                 { name: "Creation Date", value: mentionedUser.createdAt.toDateString(), inline: true },
                 { name: "Guild Join Date", value: member.joinedAt.toDateString(), inline: true }
             ],
-            footerText: `Requested by ${message.author.username}`,
+            footerText: `Requested by ${author}`,
             color: '#d32256'
         });
-        message.channel.send({ embeds: [userInfoEmbed] });
+        sendEmbed(message, userInfoEmbed);
+        // message.channel.send({ embeds: [userInfoEmbed] });
     } catch (error) {
         console.error("Error in userInfoCmd:", error);
-        message.channel.send("A problem occurred, try later.");
+        sendText(message, "A problem occurred, try later.");
+        // message.channel.send("A problem occurred, try later.");
     }
 }
 

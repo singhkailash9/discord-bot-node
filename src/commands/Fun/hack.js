@@ -1,18 +1,22 @@
+import { sendEmbed, sendText } from "../../utils/commandUtils.js";
 import { createEmbed } from "../../utils/embed.js";
+import { getAuthor } from "../../utils/getAuthor.js";
 import { getMentionedExclude } from "../../utils/mentions.js";
 
 const hackCmd = async (message, args) => {
     try {
-        const targetName = await getMentionedExclude(message, args);
+        const targetName = await getMentionedExclude(message, args, 'targetname');
+        const author = await getAuthor(message);
 
         let hackEmbed = createEmbed({
             title: `Hacking ${targetName}...`,
             description: "Locating IP address...",
             // imageUrl: "hack-gif",
-            footerText: `Initiated by ${message.author.username}`,
+            footerText: `Initiated by ${author}`,
         });
-
-        let sentMessage = await message.channel.send({ embeds: [hackEmbed] });
+        
+        let sentMessage = await sendEmbed(message, hackEmbed);
+        // let sentMessage = await message.channel.send({ embeds: [hackEmbed] });
 
         const steps = [
             "IP address located! Deploying trojan horse...",
@@ -29,15 +33,17 @@ const hackCmd = async (message, args) => {
                 title: `Hacking ${targetName}...`,
                 description: step,
                 // imageUrl: "hack-gif",
-                footerText: `Initiated by ${message.author.username}`,
+                footerText: `Initiated by ${author}`,
             });
 
-            await sentMessage.edit({ embeds: [hackEmbed] });
+            await sendEmbed(message, hackEmbed);
+            // await sentMessage.edit({ embeds: [hackEmbed] });
         }
 
     } catch (error) {
         console.error("Error in hackCmd:", error);
-        message.channel.send("Cannot hack, try later.");
+        sendText(message, "Cannot hack, try later.");
+        // message.channel.send("Cannot hack, try later.");
     }
 }
 

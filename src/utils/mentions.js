@@ -21,6 +21,8 @@ const getMentionedUser =  async(message, stringName) => {
 const getMentionedExclude =  async (interaction, args, stringName) => {
     let mentionedName;
 
+    //args
+
     // For slash commands
     if (interaction.isCommand) {
         const userOption = interaction.options.getUser(stringName, false);
