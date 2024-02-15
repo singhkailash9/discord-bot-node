@@ -1,3 +1,4 @@
+import { gifCmd } from '../commands/Fun/gif.js';
 import { hackCmd } from '../commands/Fun/hack.js';
 import { memeCmd } from '../commands/Fun/meme.js';
 import { quoteCmd } from '../commands/Fun/quote.js';
@@ -8,6 +9,19 @@ import { pfpCmd } from '../commands/Utility/pfp.js';
 import { userInfoCmd } from '../commands/Utility/userinfo.js';
 
 const commandList = {
+    gif: {
+        execute: gifCmd,
+        description: 'Sends a gif based on the query provided.',
+        category: 'Fun',
+        options: [
+            {
+                "name": "query",
+                "description": "Type the query for gif you need.",
+                "type": 3,
+                "required": true
+            }
+        ],
+    },
     hack: {
         execute: hackCmd,
         description: 'Hack a user. Pass a username or mention them along with command.',

@@ -4,8 +4,8 @@ const sendEmbed = async (message, embedData) => {
         if (message.isCommand) {
             await message.reply({ embeds: [embedData] });
         } else {
+            // returning so it can be saved and edited later if needed
             return await message.channel.send({ embeds: [embedData] });
-            // message.channel.send({ embeds: [embedData] });
         }
     } catch (err) {
         console.error(`CommandUtils Error: ${err}`);
@@ -27,7 +27,7 @@ const editEmbed = async (message, oldMessage, newEmbed) => {
     }
 }
 
-// Hybrud handling for text based reply
+// Hybrid handling for text based reply
 const sendText = async (message, text) => {
     try {
         if (message.isCommand) {
