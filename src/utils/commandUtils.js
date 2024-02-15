@@ -4,10 +4,26 @@ const sendEmbed = async (message, embedData) => {
         if (message.isCommand) {
             await message.reply({ embeds: [embedData] });
         } else {
-            message.channel.send({ embeds: [embedData] });
+            return await message.channel.send({ embeds: [embedData] });
+            // message.channel.send({ embeds: [embedData] });
         }
     } catch (err) {
         console.error(`CommandUtils Error: ${err}`);
+    }
+}
+
+// Hybrid handling for editing embed
+const editEmbed = async (message, oldMessage, newEmbed) => {
+    try {
+        // Slash cmd
+        if (message.isCommand) {
+            await message.editReply({ embeds: [newEmbed] });
+        } else {
+            // Text cmd
+            await oldMessage.edit({ embeds: [newEmbed] });
+        }
+    } catch (err) {
+        console.error(`editEmbed Error: ${err}`);
     }
 }
 
@@ -42,4 +58,4 @@ const getArgs = async (message, mArgs, stringName) => {
     }
 }
 
-export { sendEmbed, sendText, getArgs };
+export { sendEmbed, sendText, getArgs, editEmbed };

@@ -1,4 +1,4 @@
-import { sendEmbed, sendText } from "../../utils/commandUtils.js";
+import { editEmbed, sendEmbed, sendText } from "../../utils/commandUtils.js";
 import { createEmbed } from "../../utils/embed.js";
 import { getAuthor } from "../../utils/getAuthor.js";
 import { getMentionedExclude } from "../../utils/mentions.js";
@@ -36,7 +36,7 @@ const hackCmd = async (message, args) => {
                 footerText: `Initiated by ${author}`,
             });
 
-            await sendEmbed(message, hackEmbed);
+            await editEmbed(message, sentMessage, hackEmbed);
             // await sentMessage.edit({ embeds: [hackEmbed] });
         }
 
