@@ -66,30 +66,30 @@ const commandList = {
     },
     poke: {
         execute: pokeCmd,
-        description: 'Returns information related to the Pokemon.',
+        description: 'Returns information related to the Pokemon. Can use optional filters for more info. \n __Filters:__ `-b` for base-stat, `-e` for evolution, `-p` for profile.\n `Note:` Only one filter can be used at a time.',
         category: 'Poke',
         options: [
             {
                 name: "pokename",
-                description: "The pokemon name to find information of",
+                description: "The pokemon name to find information of.",
                 type: 3, // STRING
                 required: true
             },
             {
                 name: "base",
-                description: "Show base stats information",
+                description: "Show base stats information. Filter using -b or -base after command.",
                 type: 5, // BOOLEAN
                 required: false
             },
             {
                 name: "profile",
-                description: "Show Pokemon profile information",
+                description: "Show Pokemon profile information. Filter using -p or -profile after command.",
                 type: 5,
                 required: false
             },
             {
                 name: "evolution",
-                description: "Show Pokemon evolution information",
+                description: "Show Pokemon evolution information. Filter using -evol or -e after command.",
                 type: 5,
                 required: false
             }

@@ -14,7 +14,7 @@ const helpCmd = async (message, messageArgs) => {
                 title: `Help for ${commandName}`,
                 description: commandInfo.description,
                 color: '#d32256',
-                footerText: `Usage: ${prefix}${commandName} ${commandInfo.options?.map(opt => opt.required ? `<${opt.name}>` : `[${opt.name}]`).join(' ') || ''}`, // Adjust for showing command options
+                footerText: `Usage: ${prefix}${commandName} ${commandInfo.options?.map(opt => opt.required ? `<${opt.name}>` : `[${opt.name}]`).join(' ') || ''}`,
             });
             await sendEmbed(message, detailedEmbed);
         } else {
