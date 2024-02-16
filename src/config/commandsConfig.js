@@ -4,6 +4,7 @@ import { memeCmd } from '../commands/Fun/meme.js';
 import { quoteCmd } from '../commands/Fun/quote.js';
 import { helpCmd } from '../commands/Misc/help.js';
 import { testCmd } from '../commands/Misc/test.js';
+import { pokeCmd } from '../commands/Poke/poke.js';
 import { defineCmd } from '../commands/Utility/define.js';
 import { pfpCmd } from '../commands/Utility/pfp.js';
 import { userInfoCmd } from '../commands/Utility/userinfo.js';
@@ -62,6 +63,19 @@ const commandList = {
         execute: testCmd,
         description: 'Test command for embed and bot status.',
         category: 'Misc',
+    },
+    poke: {
+        execute: pokeCmd,
+        description: 'Returns the information related to the Pokemon.',
+        category: 'Poke',
+        options: [
+            {
+                "name": "pokename",
+                "description": "The pokemon name to find information of",
+                "type": 3,
+                "required": true
+            }
+        ],
     },
     define: {
         execute: defineCmd,
