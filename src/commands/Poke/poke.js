@@ -8,6 +8,9 @@ import { evolutionFilter } from "./evolution.js";
 const pokeCmd = async (message, margs)=>{
     try {
         const args = await getArgs(message, margs, 'pokename');
+        const base = message.options?.getBoolean('base') || false;
+        const profile = message.options?.getBoolean('profile') || false;
+        const evolution = message.options?.getBoolean('evolution') || false;
         if (!args || args.length === 0) {
             sendText(message, "Please provide a Pokémon name.");
             return;
@@ -22,13 +25,13 @@ const pokeCmd = async (message, margs)=>{
             return;
         }
 
-        if (filters.includes('-b') || filters.includes('-base')) {
+        if (base || filters.includes('-b') || filters.includes('-base')) {
             await baseStatFilter(message, pokeData);
             return;
-        } else if (filters.includes('-p') || filters.includes('-profile')) {
+        } else if (profile || filters.includes('-p') || filters.includes('-profile')) {
             await profileFilter(message, pokeData);
             return;
-        } else if (filters.includes('-e') || filters.includes('-evol')) {
+        } else if (evolution || filters.includes('-e') || filters.includes('-evol')) {
             await evolutionFilter(message, pokeData);
             return;
         }
