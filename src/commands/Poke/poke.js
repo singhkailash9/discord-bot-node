@@ -1,6 +1,7 @@
 import { getArgs, sendEmbed, sendText } from "../../utils/commandUtils.js";
 import { createEmbed } from "../../utils/embed.js";
 import pokedex from "../../data/pokedex.json" assert { type: 'json' };
+import { baseStatFilter } from "./base-stat.js";
 
 const pokeCmd = async (message, margs)=>{
     try {
@@ -9,6 +10,7 @@ const pokeCmd = async (message, margs)=>{
             sendText(message, "Please provide a Pokémon name.");
             return;
         }
+        const filters = args.slice(1);
 
         let pokeName = args[0].charAt(0).toUpperCase() + args[0].slice(1).toLowerCase();
 
@@ -17,6 +19,15 @@ const pokeCmd = async (message, margs)=>{
             sendText(message, "Pokémon not found!");
             return;
         }
+
+        if (filters.includes('-b') || filters.includes('-base')) {
+            await baseStatFilter(message, pokeData);
+            return;
+        }
+        // } else if (filters.includes('-p') || filters.includes('-profile')) {
+        //     await profileFilter(message, pokeData);
+        // } else if (filters.includes('-e') || filters.includes('-evol')) {
+        //     await evolutionFilter(message, pokeData);
 
         // Pokedex ID, Name, Type, description, species and the pokemon image.
         const pokeEmbed = createEmbed({

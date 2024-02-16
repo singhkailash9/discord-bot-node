@@ -66,17 +66,35 @@ const commandList = {
     },
     poke: {
         execute: pokeCmd,
-        description: 'Returns the information related to the Pokemon.',
+        description: 'Returns information related to the Pokemon.',
         category: 'Poke',
         options: [
             {
-                "name": "pokename",
-                "description": "The pokemon name to find information of",
-                "type": 3,
-                "required": true
+                name: "pokename",
+                description: "The pokemon name to find information of",
+                type: 3, // STRING
+                required: true
+            },
+            {
+                name: "base",
+                description: "Show base stats information",
+                type: 5, // BOOLEAN
+                required: false
+            },
+            {
+                name: "profile",
+                description: "Show Pokemon profile information",
+                type: 5,
+                required: false
+            },
+            {
+                name: "evolution",
+                description: "Show Pokemon evolution information",
+                type: 5,
+                required: false
             }
         ],
-    },
+    },    
     define: {
         execute: defineCmd,
         description: 'Returns the definition of an English word.',

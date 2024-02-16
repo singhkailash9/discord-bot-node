@@ -17,8 +17,8 @@ This project is a Discord bot built with Node.js. It is the revamped version of 
 
 - **Pokemon Data:** Poke command to find information related to a pokemon. It displays Pokedex ID, Name, Type, description, species and the pokemon image. Use Poke command along with the name of the Pokemon.
 <!-- - **Evolution line:** Displays the evolution line and evolution level of a Pokemon.
-- **Base stat:** Shows the base stat of a Pokemon such as HP, atk, def, sp.atk, sp.def and speed.
 - **Pokemon Profile:** Shows the profile of a pokemon such as ability, height, weight, gender ratio and egg type. -->
+- **Base stat:** Shows the base stat of a Pokemon such as HP, atk, def, sp.atk, sp.def and speed.
 
 ### 3. Utility Commands:
 
