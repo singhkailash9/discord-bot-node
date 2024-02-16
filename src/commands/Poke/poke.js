@@ -32,7 +32,7 @@ const pokeCmd = async (message, margs)=>{
             await profileFilter(message, pokeData);
             return;
         } else if (evolution || filters.includes('-e') || filters.includes('-evol')) {
-            await evolutionFilter(message, pokeData);
+            await evolutionFilter(message, pokedex, pokeData);
             return;
         }
 
@@ -43,7 +43,7 @@ const pokeCmd = async (message, margs)=>{
             fields: [
                 { name: "Type", value: pokeData.type.join(', '), inline: true }
             ],
-            imageUrl: `${pokeData.image.thumbnail}`,
+            imageUrl: pokeData.image.thumbnail,
             footerText: `Species: ${pokeData.species}`,
             color: '#d32256'
         });

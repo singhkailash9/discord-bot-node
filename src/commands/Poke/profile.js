@@ -15,15 +15,16 @@ const profileFilter = async (message, pokeData) => {
 
         const pokeEmbed = createEmbed({
             title: `ID: ${pokeData.id}`,
-            description: `Profile of **${pokeData.name.english}**`,
+            description: `__**${pokeData.name.english}**__`,
+            imageUrl: pokeData.image.thumbnail,
             fields: [
-                { name: "Height", value: pokeData.profile.height, inline: true },
-                { name: "Weight", value: pokeData.profile.weight, inline: true },
-                { name: "Egg Types", value: eggTypes, inline: false },
-                { name: "Abilities", value: abilities, inline: false },
-                { name: "Gender Ratio", value: genderValue, inline: true },
+                { name: "__Height__", value: pokeData.profile.height, inline: true },
+                { name: "__Weight__", value: pokeData.profile.weight, inline: true },
+                { name: "__Egg Types__", value: eggTypes, inline: false },
+                { name: "__Abilities__", value: abilities, inline: false },
+                { name: "__Gender Ratio__", value: genderValue, inline: true },
             ],
-            footerText: `Profile filter using -p or -profile`,
+            footerText: "Displaying Profile",
             color: '#d32256'
         });
         await sendEmbed(message, pokeEmbed);

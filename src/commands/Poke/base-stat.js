@@ -5,11 +5,12 @@ import { createEmbed } from "../../utils/embed.js";
 const baseStatFilter = async (message, pokeData) => {
     try {
         let fieldsData = Object.entries(pokeData.base).map(([key, value]) => {
-            return { name: key, value: value.toString(), inline: true };
+            return { name: `__${key}__`, value: value.toString(), inline: true };
         });
         const pokeEmbed = createEmbed({
             title: `ID: ${pokeData.id}`,
-            description: pokeData.name.english,
+            description: `__**${pokeData.name.english}**__`,
+            imageUrl: pokeData.image.thumbnail,
             fields: fieldsData,
             footerText: "Displaying Base Stat",
             color: '#d32256'
