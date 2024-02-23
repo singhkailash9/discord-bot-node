@@ -5,6 +5,7 @@ import { quoteCmd } from '../commands/Fun/quote.js';
 import { helpCmd } from '../commands/Misc/help.js';
 import { testCmd } from '../commands/Misc/test.js';
 import { pokeCmd } from '../commands/Poke/poke.js';
+import { mathCmd } from '../commands/Productivity/math.js';
 import { defineCmd } from '../commands/Utility/define.js';
 import { pfpCmd } from '../commands/Utility/pfp.js';
 import { userInfoCmd } from '../commands/Utility/userinfo.js';
@@ -66,7 +67,7 @@ const commandList = {
     },
     poke: {
         execute: pokeCmd,
-        description: 'Returns information related to the Pokemon. Can use optional filters for more info. \n __Filters:__ `-b` for base-stat, `-e` for evolution, `-p` for profile.\n `Note:` Only one filter can be used at a time.',
+        description: 'Returns info of a pokemon. Optional filters: base state, evolution and profile using (-b, -e, -p).',
         category: 'Poke',
         options: [
             {
@@ -95,6 +96,19 @@ const commandList = {
             }
         ],
     },    
+    math: {
+        execute: mathCmd,
+        description: 'Does some basic math for you using the expression provided.',
+        category: 'Productivity',
+        options: [
+            {
+                "name": "expression",
+                "description": "The expression to evaluate.",
+                "type": 3,
+                "required": true
+            }
+        ],
+    },
     define: {
         execute: defineCmd,
         description: 'Returns the definition of an English word.',

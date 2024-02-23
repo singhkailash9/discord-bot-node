@@ -15,7 +15,7 @@ const commands = Object.entries(commandList).map(([key, { description, options }
     return command;
 });
 
-const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_TOKEN);
+const rest = new REST().setToken(process.env.DISCORD_TOKEN);
 
 (async () => {
     try {
