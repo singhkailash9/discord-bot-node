@@ -5,10 +5,13 @@ import { quoteCmd } from '../commands/Fun/quote.js';
 import { helpCmd } from '../commands/Misc/help.js';
 import { testCmd } from '../commands/Misc/test.js';
 import { pokeCmd } from '../commands/Poke/poke.js';
+import { convertCmd } from '../commands/Productivity/convert.js';
 import { mathCmd } from '../commands/Productivity/math.js';
 import { defineCmd } from '../commands/Utility/define.js';
 import { pfpCmd } from '../commands/Utility/pfp.js';
 import { userInfoCmd } from '../commands/Utility/userinfo.js';
+
+// https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-type
 
 const commandList = {
     gif: {
@@ -93,6 +96,41 @@ const commandList = {
                 description: "Show Pokemon evolution information. Filter using -evol or -e after command.",
                 type: 5,
                 required: false
+            }
+        ],
+    },    
+    convert: {
+        execute: convertCmd,
+        description: 'Does some basic math for you using the expression provided.',
+        category: 'Productivity',
+        options: [
+            {
+                name: "from_unit",
+                description: "Convert from the unit.",
+                type: 3,
+                choices: [
+                    { name: "Kilometers", value: "kilometers" },
+                    { name: "Meters", value: "meters" },
+                    { name: "Miles", value: "miles" }
+                ],
+                required: true
+            },
+            {
+                name: "to_unit",
+                description: "Convert into the unit.",
+                type: 3,
+                choices: [
+                    { name: "Kilometers", value: "kilometers" },
+                    { name: "Meters", value: "meters" },
+                    { name: "Miles", value: "miles" }
+                ],
+                required: true
+            },
+            {
+                name: "value",
+                description: "The value to convert.",
+                type: 10, // Any double between -2^53 and 2^53
+                required: true
             }
         ],
     },    

@@ -22,13 +22,18 @@ This project is a Discord bot built with Node.js. It is the revamped version of 
 
 **Note:** Using Filter for poke command Pikachu to see base stat, let's say prefix is `+` then the command will be: `+poke pikachu -b` and so on. Using filter is optional and only one can be used at a time.
 
-### 3. Utility Commands:
+### 3. Productivity Commands:
+
+- **Math Command:** Evaluates a basic math expression and returns it.
+- **Convert Command:** Converts a value from one unit to another. (e.g., from Kilometers to miles or miles to meters)
+
+### 4. Utility Commands:
 
 - **Profile Picture:** Displays profile picture of the user using pfp command.
 - **Define Command:** Displays definition of the word using define command.
 - **Userinfo Command:** Displays the detailed information of a user.
 
-### 4. Misc. Commands:
+### 5. Misc. Commands:
 
 - **Help Command:** Help command to get started.
 - **Test Commands:** To test the embed and if the bot is active.
