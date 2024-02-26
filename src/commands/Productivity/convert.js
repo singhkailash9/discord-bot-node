@@ -13,9 +13,11 @@ const convertCmd = async (message, margs) => {
             to_unit = to_unit.toLowerCase();
             conversionValue = parseFloat(conversionValue);
         } else {
-            from_unit = await getArgs(message, margs, "from_unit");
-            to_unit = await getArgs(message, margs, "to_unit");
-            conversionValue = parseFloat(await getArgs(message, margs, "value"));
+            const from = await getArgs(message, margs, "from_unit");
+            from_unit= from[0];
+            const to = await getArgs(message, margs, "to_unit");
+            to_unit = to[0];
+            conversionValue = parseFloat(message.options?.getNumber("value"));
         }
 
         if (isNaN(conversionValue)) {
@@ -36,14 +38,21 @@ const convertCmd = async (message, margs) => {
             const convert_to = mArray.includes(to_unit) ? "meters" : milesArray.includes(to_unit) ? "miles" : undefined;
             convertedValue = handleKm(convert_to, conversionValue);
         } else if (milesArray.includes(from_unit)){
-            const convert_to = kmArray.includes(to_unit) ? "kilometers" : milesArray.includes(to_unit) ? "meters" : undefined;
+            const convert_to = kmArray.includes(to_unit) ? "kilometers" : mArray.includes(to_unit) ? "meters" : undefined;
             convertedValue = handleMiles(convert_to, conversionValue);
         } else if (mArray.includes(from_unit)){
             const convert_to = kmArray.includes(to_unit) ? "kilometers" : milesArray.includes(to_unit) ? "miles" : undefined;
             convertedValue = handleMeters(convert_to, conversionValue);
         }
         if (convertedValue !== undefined) {
-            response = `${conversionValue} ${from_unit} is ${convertedValue.toFixed(2)} ${to_unit}.`;
+            let finalValue;
+            if (convertedValue.toFixed(2) == 0.00) {
+                finalValue = convertedValue;
+            } else {
+                finalValue = convertedValue.toFixed(2);
+            }
+            
+            response = `${conversionValue} ${from_unit} is ${finalValue} ${to_unit}.`;
         }
         await sendText(message, response);
 
