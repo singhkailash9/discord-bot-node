@@ -39,9 +39,6 @@ This project is a Discord bot built with Node.js. It is the revamped version of 
 - **Test Commands:** To test the embed and if the bot is active.
 
 
-(**Note:** This bot is in its early stages of development. I'm planning to add more features in future as I get more ideas. It is a passion project that I work on in my free time.)
-
-
 ## Installation
 
 > Node.js is required to run the script or run the bot.
@@ -51,37 +48,37 @@ To get Nodot up and running on your local machine for development and testing pu
 1. Clone the repository:
 
 ```
-git clone https://github.com/singhkailash9/nodot-discord-bot.git
-cd nodot-discord-bot
+    git clone https://github.com/singhkailash9/nodot-discord-bot.git
+    cd nodot-discord-bot
 ```
 
 2. Install NPM packages:
 
 ```
-npm install
+    npm install
 ```
 
 3. Create a .env file in the root directory and add following variables:
 
 ```
-DISCORD_TOKEN = your_discord_bot_token
-TENOR_API = your_tenor_api
-MEME_API = your_meme_api
-QUOTE_API = your_quote_api
-DICTIONARY_API = your_dictionary_api
+    DISCORD_TOKEN = your_discord_bot_token
+    TENOR_API = your_tenor_api
+    MEME_API = your_meme_api
+    QUOTE_API = your_quote_api
+    DICTIONARY_API = your_dictionary_api
 ```
 > If you are using different API from me, make sure to modify fetch response in the corresponding commands.
 
 4. To register the slash commands with the Discord API, run the following script:
 ```
-node .\scripts\registerSlashCmd.js
+    node .\scripts\registerSlashCmd.js
 ```
 
 ## Usage
 
 Start the bot by running:
 ```
-node index.js
+    node index.js
 ```
 
 Now, the bot should be running and ready to respond to commands on your Discord server.
