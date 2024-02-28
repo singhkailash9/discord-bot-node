@@ -9,6 +9,7 @@ import { convertCmd } from '../commands/Productivity/convert.js';
 import { mathCmd } from '../commands/Productivity/math.js';
 import { defineCmd } from '../commands/Utility/define.js';
 import { pfpCmd } from '../commands/Utility/pfp.js';
+import { pollCmd } from '../commands/Utility/poll.js';
 import { userInfoCmd } from '../commands/Utility/userinfo.js';
 
 // https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-type
@@ -171,6 +172,37 @@ const commandList = {
                 "type": 6, // 6 is for USER (mentions)
                 "required": false
             }
+        ],
+    },
+    poll: {
+        execute: pollCmd,
+        description: 'Starts a poll on a topic.',
+        category: 'Utility',
+        options: [
+            {
+                "name": "topic",
+                "description": "Topic of the poll.",
+                "type": 3,
+                "required": true
+            },
+            {
+                "name": "option1",
+                "description": "Option 1.",
+                "type": 3,
+                "required": true
+            },
+            {
+                "name": "option2",
+                "description": "Option 2.",
+                "type": 3,
+                "required": true
+            },
+            {
+                "name": "time",
+                "description": "Time limit as 5m or 4hr",
+                "type": 3,
+                "required": true
+            },
         ],
     },
     userinfo: {
