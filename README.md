@@ -31,6 +31,7 @@ This project is a Discord bot built with Node.js. It is the revamped version of 
 
 - **Profile Picture:** Displays profile picture of the user using pfp command.
 - **Define Command:** Displays definition of the word using define command.
+- **Poll Command:** Starts a poll with a timelimit using poll command.
 - **Userinfo Command:** Displays the detailed information of a user.
 
 ### 5. Misc. Commands:
