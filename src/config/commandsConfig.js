@@ -186,23 +186,11 @@ const commandList = {
                 "required": true
             },
             {
-                "name": "option1",
-                "description": "Option 1.",
+                "name": "options",
+                "description": "Poll options separated by pipe operator | ",
                 "type": 3,
                 "required": true
-            },
-            {
-                "name": "option2",
-                "description": "Option 2.",
-                "type": 3,
-                "required": true
-            },
-            {
-                "name": "time",
-                "description": "Time limit as 5m or 4hr",
-                "type": 3,
-                "required": true
-            },
+            }
         ],
     },
     userinfo: {

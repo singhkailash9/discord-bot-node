@@ -1,20 +1,31 @@
-import { getArgs, sendText } from "../../utils/commandUtils.js";
+import { getArgs, sendEmbed, sendText } from "../../utils/commandUtils.js";
+import { createEmbed } from "../../utils/embed.js";
 
 const pollCmd = async (message, margs) => {
     try {
-        let topic, option1, option2, time;
+        let topic, options;
         if(message.isCommand || message.commandName){
             topic =  await getArgs(message, margs, "topic");
-            option1 =  await getArgs(message, margs, "option1");
-            option2 =  await getArgs(message, margs, "option2");
-            time =  await getArgs(message, margs, "time");
-        } else if(margs.length > 3){
-            [topic, option1, option2, time] = margs;
+            options =  await getArgs(message, margs, "options");
+        } else if(margs.length > 1){
+            topic = margs[0];
+            options = margs[1];
         } else {
-            sendText(message, "Please provide valid syntax: poll <topic> <option1> <option2> <time>");
+            sendText(message, "Please provide valid syntax: poll <topic> <options> separated by | ");
             return
         }
-        sendText(message, "poll");
+        let choices = options.split("|").map(option => option.trim());
+        // TODO: create embed msg with choices and reaction as 1,2,3...
+        let pollEmbed = createEmbed({
+            title: 'Title',
+            description: 'This is an example embed.',
+            footerText: 'Footer',
+            color: '#d32256'
+        });
+        // TODO: create reactions based on number of options
+        console.log(topic, options, choices);
+
+        sendEmbed(message, pollEmbed);
     } catch (error) {
         console.error("Error in pollCmd:", error);
         sendText(message, "A problem occurred, try later.");
