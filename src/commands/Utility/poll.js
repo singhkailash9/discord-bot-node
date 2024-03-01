@@ -16,7 +16,7 @@ const pollCmd = async (message, margs) => {
             sendText(message, "Please provide valid syntax: poll <topic> <options> separated by | ");
             return
         }
-        
+
         let choices = options.split("|").map(option => option.trim());
         let numberOfOptions = choices.length;
         if(numberOfOptions > 9){
@@ -33,11 +33,18 @@ const pollCmd = async (message, margs) => {
             color: '#d32256'
         });
 
-        let sentMessage = await sendEmbed(message, pollEmbed);
-        let emojis = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣'];
+        const reactEmoji = sentMessage => {
+            for (let i = 0; i < numberOfOptions; i++) {
+                sentMessage.react(emojis[i]);
+            }
+        }
 
-        for (let i = 0; i < numberOfOptions; i++) {
-            await sentMessage.react(emojis[i]);
+        let emojis = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣'];
+        if(message.isCommand || message.commandName) {
+            await message.reply({ embeds: [pollEmbed], fetchReply: true }).then(sentMessage => reactEmoji(sentMessage));
+        } else {
+            let sentMessage = await sendEmbed(message, pollEmbed);
+            reactEmoji(sentMessage);
         }
 
     } catch (error) {
