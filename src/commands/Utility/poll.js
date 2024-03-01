@@ -16,7 +16,14 @@ const pollCmd = async (message, margs) => {
             sendText(message, "Please provide valid syntax: poll <topic> <options> separated by | ");
             return
         }
+        
         let choices = options.split("|").map(option => option.trim());
+        let numberOfOptions = choices.length;
+        if(numberOfOptions > 9){
+            sendText(message, "Maximum options can be 9");
+            return
+        }
+
         let pollChoices = choices.map((choice, index) =>`${index + 1}. ${choice} \n`);
         let desc = pollChoices.join("");
         let pollEmbed = createEmbed({
@@ -25,9 +32,14 @@ const pollCmd = async (message, margs) => {
             footerText: 'React to vote',
             color: '#d32256'
         });
-        // TODO: create reactions based on number of options
 
-        sendEmbed(message, pollEmbed);
+        let sentMessage = await sendEmbed(message, pollEmbed);
+        let emojis = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣'];
+
+        for (let i = 0; i < numberOfOptions; i++) {
+            await sentMessage.react(emojis[i]);
+        }
+
     } catch (error) {
         console.error("Error in pollCmd:", error);
         sendText(message, "A problem occurred, try later.");

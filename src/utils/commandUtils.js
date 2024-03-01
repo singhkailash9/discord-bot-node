@@ -8,7 +8,7 @@ const sendEmbed = async (message, embedData) => {
             return await message.channel.send({ embeds: [embedData] });
         }
     } catch (err) {
-        console.error(`CommandUtils Error: ${err}`);
+        console.error(`sendEmbed Error: ${err}`);
     }
 }
 
@@ -36,7 +36,7 @@ const sendText = async (message, text) => {
             message.channel.send(text);
         }
     } catch (err) {
-        console.error(`CommandUtils Error: ${err}`);
+        console.error(`sendText Error: ${err}`);
     }
 }
 
@@ -54,7 +54,7 @@ const getArgs = async (message, mArgs, stringName) => {
             return mArgs;
         }
     } catch (err) {
-        console.error(`CommandUtils Error: ${err}`);
+        console.error(`getArgs Error: ${err}`);
     }
 }
 
