@@ -3,27 +3,29 @@ import { createEmbed } from "../../utils/embed.js";
 
 const pollCmd = async (message, margs) => {
     try {
-        let topic, options;
+        let topic, options;      
         if(message.isCommand || message.commandName){
             topic =  await getArgs(message, margs, "topic");
+            topic = topic.toString();
             options =  await getArgs(message, margs, "options");
+            options =  options.toString();
         } else if(margs.length > 1){
-            topic = margs[0];
-            options = margs[1];
+            topic = margs.shift();
+            options = margs.join("");
         } else {
             sendText(message, "Please provide valid syntax: poll <topic> <options> separated by | ");
             return
         }
         let choices = options.split("|").map(option => option.trim());
-        // TODO: create embed msg with choices and reaction as 1,2,3...
+        let pollChoices = choices.map((choice, index) =>`${index + 1}. ${choice} \n`);
+        let desc = pollChoices.join("");
         let pollEmbed = createEmbed({
-            title: 'Title',
-            description: 'This is an example embed.',
-            footerText: 'Footer',
+            title: topic,
+            description: desc,
+            footerText: 'React to vote',
             color: '#d32256'
         });
         // TODO: create reactions based on number of options
-        console.log(topic, options, choices);
 
         sendEmbed(message, pollEmbed);
     } catch (error) {
