@@ -5,10 +5,8 @@ const pollCmd = async (message, margs) => {
     try {
         let topic, options;      
         if(message.isCommand || message.commandName){
-            topic =  await getArgs(message, margs, "topic");
-            topic = topic.toString();
-            options =  await getArgs(message, margs, "options");
-            options =  options.toString();
+            topic = message.options.getString('topic');
+            options = message.options.getString('options');
         } else if(margs.length > 1){
             topic = margs.shift();
             options = margs.join("");

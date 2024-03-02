@@ -31,7 +31,7 @@ This project is a Discord bot built with Node.js. It is the revamped version of 
 
 - **Profile Picture:** Displays profile picture of the user using pfp command.
 - **Define Command:** Displays definition of the word using define command.
-- **Poll Command:** Starts a poll with a timelimit using poll command.
+- **Poll Command:** Starts a poll with topic and choices using poll command.
 - **Userinfo Command:** Displays the detailed information of a user.
 
 ### 5. Misc. Commands:
@@ -59,7 +59,7 @@ To get Nodot up and running on your local machine for development and testing pu
     npm install
 ```
 
-3. Create a .env file in the root directory and add following variables:
+3. Create a `.env` file in the root directory and add following variables:
 
 ```
     DISCORD_TOKEN = your_discord_bot_token
@@ -79,7 +79,7 @@ To get Nodot up and running on your local machine for development and testing pu
 
 Start the bot by running:
 ```
-    node index.js
+    node app.js
 ```
 
 Now, the bot should be running and ready to respond to commands on your Discord server.
